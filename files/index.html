@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eastwood Manila Properties | Direct from Owner - Commercial & Residential Spaces</title>
+    <meta name="description" content="Premium commercial and residential properties for sale in Eastwood City, Quezon City. Direct from owner — no agent fees.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-primary: #1a365d;
+            --color-primary-light: #2c5282;
+            --color-accent: #c9a227;
+            --color-accent-light: #d4af37;
+            --color-text: #2d3748;
+            --color-text-light: #718096;
+            --color-bg: #fafafa;
+            --color-white: #ffffff;
+            --color-success: #38a169;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); color: var(--color-text); background: var(--color-bg); line-height: 1.6; }
+
+        .header { position: fixed; top: 0; left: 0; right: 0; background: rgba(255,255,255,0.97); backdrop-filter: blur(10px); z-index: 1000; padding: 1rem 2rem; box-shadow: var(--shadow-sm); }
+        .header-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--color-primary); }
+        .logo-icon { width: 45px; height: 45px; background: var(--color-primary); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--color-accent); font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; }
+        .logo-text { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; line-height: 1.2; }
+        .logo-text span { display: block; font-family: var(--font-body); font-size: 0.7rem; font-weight: 400; color: var(--color-text-light); letter-spacing: 0.5px; text-transform: uppercase; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--color-text); font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--color-primary); }
+
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; }
+        .btn-primary { background: var(--color-success); color: white; }
+        .btn-primary:hover { background: #2f855a; transform: translateY(-1px); }
+        .btn-whatsapp { background: #25D366; color: white; font-size: 1rem; padding: 1rem 2rem; }
+        .btn-whatsapp:hover { background: #128C7E; }
+        .btn-ghost { background: rgba(255,255,255,0.1); color: white; border: 2px solid rgba(255,255,255,0.3); }
+        .btn-ghost:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.5); }
+        .btn-inquire { background: var(--color-primary); color: white; padding: 0.6rem 1.2rem; font-size: 0.85rem; }
+        .btn-inquire:hover { background: var(--color-primary-light); }
+
+        .hero { min-height: 100vh; display: flex; align-items: center; background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%); position: relative; overflow: hidden; padding-top: 80px; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.5; }
+        .hero-content { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 1; }
+        .hero-text { color: white; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--color-accent); color: var(--color-primary); padding: 0.5rem 1rem; border-radius: 50px; font-weight: 600; font-size: 0.85rem; margin-bottom: 1.5rem; animation: fadeInUp 0.6s ease; }
+        .hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; line-height: 1.15; margin-bottom: 1.5rem; animation: fadeInUp 0.6s ease 0.1s both; }
+        .hero h1 span { color: var(--color-accent); }
+        .hero-description { font-size: 1.2rem; opacity: 0.9; margin-bottom: 2rem; line-height: 1.7; animation: fadeInUp 0.6s ease 0.2s both; }
+        .hero-stats { display: flex; gap: 2.5rem; margin-bottom: 2.5rem; animation: fadeInUp 0.6s ease 0.3s both; }
+        .stat { text-align: left; }
+        .stat-value { font-family: var(--font-display); font-size: 2.5rem; font-weight: 700; color: var(--color-accent); }
+        .stat-label { font-size: 0.9rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.5px; }
+        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeInUp 0.6s ease 0.4s both; }
+        .hero-visual { position: relative; animation: fadeInRight 0.8s ease 0.3s both; }
+        .hero-card { background: white; border-radius: 16px; padding: 2rem; box-shadow: var(--shadow-lg); }
+
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; max-width: 700px; margin: 0 auto 3rem; }
+        .section-header h2 { font-family: var(--font-display); font-size: 2.5rem; color: var(--color-primary); margin-bottom: 1rem; }
+        .section-header p { color: var(--color-text-light); font-size: 1.1rem; }
+
+        .value-prop { background: white; padding: 5rem 2rem; }
+        .benefits-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+        .benefit-card { text-align: center; padding: 2rem; }
+        .benefit-icon { width: 70px; height: 70px; background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; color: var(--color-accent); }
+        .benefit-card h3 { font-family: var(--font-display); font-size: 1.2rem; color: var(--color-primary); margin-bottom: 0.75rem; }
+        .benefit-card p { color: var(--color-text-light); font-size: 0.95rem; line-height: 1.6; }
+
+        .properties { padding: 5rem 2rem; background: var(--color-bg); }
+        .property-filters { display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; }
+        .filter-btn { padding: 0.75rem 1.5rem; border: 2px solid #e2e8f0; background: white; border-radius: 50px; font-weight: 500; color: var(--color-text); cursor: pointer; transition: all 0.2s; }
+        .filter-btn:hover, .filter-btn.active { border-color: var(--color-primary); background: var(--color-primary); color: white; }
+        .properties-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .property-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); transition: all 0.3s; position: relative; }
+        .property-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+        .property-card.sold { opacity: 0.7; }
+        .sold-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-15deg); background: #e53e3e; color: white; padding: 0.5rem 2rem; font-weight: 700; font-size: 1.5rem; z-index: 10; border-radius: 4px; }
+        .property-image { height: 200px; position: relative; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.9rem; }
+        .property-type-badge { position: absolute; top: 1rem; left: 1rem; background: white; color: var(--color-primary); padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .property-content { padding: 1.5rem; }
+        .property-title { font-family: var(--font-display); font-size: 1.2rem; color: var(--color-primary); margin-bottom: 0.5rem; }
+        .property-location { color: var(--color-text-light); font-size: 0.9rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.4rem; }
+        .property-details { display: flex; gap: 1.5rem; margin-bottom: 1.25rem; padding-bottom: 1.25rem; border-bottom: 1px solid #e2e8f0; flex-wrap: wrap; }
+        .property-detail { display: flex; align-items: center; gap: 0.4rem; font-size: 0.9rem; color: var(--color-text); }
+        .property-detail svg { color: var(--color-accent); }
+        .property-footer { display: flex; justify-content: space-between; align-items: center; }
+        .property-price { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--color-primary); }
+
+        .documents { background: white; padding: 5rem 2rem; }
+        .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .trust-card { background: var(--color-bg); padding: 2rem; border-radius: 12px; text-align: center; }
+        .trust-icon { width: 60px; height: 60px; background: var(--color-success); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white; }
+        .trust-card h3 { font-family: var(--font-display); font-size: 1.1rem; color: var(--color-primary); margin-bottom: 0.5rem; }
+        .trust-card p { color: var(--color-text-light); font-size: 0.9rem; }
+
+        .cta { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%); padding: 5rem 2rem; text-align: center; color: white; }
+        .cta h2 { font-family: var(--font-display); font-size: 2.5rem; margin-bottom: 1rem; }
+        .cta p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .cta-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+        .contact-info { margin-top: 3rem; display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+        .contact-item { display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.9); }
+        .contact-item svg { color: var(--color-accent); }
+
+        .footer { background: #0f1f38; color: rgba(255,255,255,0.7); padding: 3rem 2rem; text-align: center; }
+        .footer-logo { font-family: var(--font-display); font-size: 1.5rem; color: white; margin-bottom: 1rem; }
+        .footer p { font-size: 0.9rem; max-width: 500px; margin: 0 auto 1.5rem; }
+        .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; }
+        .footer-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--color-accent); }
+        .footer-bottom { padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; }
+
+        .whatsapp-float { position: fixed; bottom: 2rem; right: 2rem; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); z-index: 999; transition: all 0.3s; text-decoration: none; }
+        .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5); }
+        .whatsapp-float svg { width: 32px; height: 32px; }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+
+        @media (max-width: 992px) {
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-stats { justify-content: center; }
+            .hero-buttons { justify-content: center; }
+            .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+            .properties-grid { grid-template-columns: repeat(2, 1fr); }
+            .trust-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .header { padding: 0.75rem 1rem; }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2rem; }
+            .benefits-grid, .properties-grid { grid-template-columns: 1fr; }
+            .contact-info { flex-direction: column; align-items: center; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <div class="logo-icon">E</div>
+                <div class="logo-text">Eastwood Manila Properties<span>Properties</span></div>
+            </a>
+            <nav class="nav-links">
+                <a href="#properties">Properties</a>
+                <a href="#why-us">Why Us</a>
+                <a href="#contact">Contact</a>
+                <a href="https://wa.me/639673003117?text=Hi%21%20I%27m%20interested%20in%20your%20Eastwood%20properties.%20Can%20you%20send%20me%20more%20details%3F" class="btn btn-primary" target="_blank">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    WhatsApp Us
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    Direct from Owner — No Agent Fees
+                </div>
+                <h1>Premium Properties in <span>Eastwood City</span></h1>
+                <p class="hero-description">Premium commercial and residential properties for sale in Eastwood City, Quezon City. Direct from owner — no agent fees.</p>
+                <div class="hero-stats">
+                    <div class="stat"><div class="stat-value">14</div><div class="stat-label">Properties</div></div>
+                    <div class="stat"><div class="stat-value">₱135M+</div><div class="stat-label">Total Value</div></div>
+                    <div class="stat"><div class="stat-value">100%</div><div class="stat-label">Clean Titles</div></div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="https://wa.me/639673003117?text=Hi%21%20I%27m%20interested%20in%20your%20Eastwood%20properties.%20Can%20you%20send%20me%20more%20details%3F" class="btn btn-whatsapp" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Chat on WhatsApp
+                    </a>
+                    <a href="#properties" class="btn btn-ghost">View All Properties</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <h3 style="font-family: var(--font-display); color: var(--color-primary); margin-bottom: 1rem;">Why Buy Direct?</h3>
+                    <ul style="list-style: none; color: var(--color-text);">
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38a169" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            Save 3-5% on agent fees
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38a169" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            Faster, direct communication
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38a169" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            All documents ready
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38a169" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            Flexible pricing for serious buyers
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="value-prop" id="why-us">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Buy Direct from Owner?</h2>
+                <p>Skip the middlemen, save money, and get a smoother transaction experience.</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg></div>
+                    <h3>No Agent Fees</h3>
+                    <p>Save 3-5% on commission fees. That's up to ₱1M savings on larger units.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                    <h3>Faster Process</h3>
+                    <p>Direct communication means quicker decisions and faster closing timelines.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+                    <h3>Complete Documents</h3>
+                    <p>All titles are clean. Tax declarations and RPT payments are up to date.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                    <h3>Price Negotiable</h3>
+                    <p>Flexible pricing for serious buyers. Bundle discounts available for multiple units.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="properties" id="properties">
+        <div class="container">
+            <div class="section-header">
+                <h2>Available Properties</h2>
+                <p>Premium commercial and residential spaces in Eastwood City's prime buildings.</p>
+            </div>
+            <div class="property-filters">
+                <button class="filter-btn active" data-filter="all">All Properties</button>
+                <button class="filter-btn" data-filter="commercial">Commercial</button>
+                <button class="filter-btn" data-filter="residential">Residential</button>
+                <button class="filter-btn" data-filter="parking">Parking</button>
+            </div>
+            <div class="properties-grid">
+
+                <div class="property-card" data-type="commercial">
+                    
+                    
+            <div class="property-image" style="background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);">
+                <span class="property-type-badge">Commercial</span>
+                Cyber One Building
+            </div>
+                    <div class="property-content">
+                        <h3 class="property-title">7S - Cyber One Building</h3>
+                        <div class="property-location">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Eastwood City Cyberpark, QC
+                        </div>
+                        <div class="property-details">
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                                63 sqm
+                            </div>
+                            
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                PEZA Zone
+                            </div>
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                Clean Title
+                            </div>
+                        </div>
+                        <div class="property-footer">
+                            <div class="property-price">₱8.5M</div>
+                            <a href="https://wa.me/639673003117?text=Hi%21%20I%27m%20interested%20in%207S%20at%20Cyber%20One%20Building%20%2863sqm%20-%20%E2%82%B18.5M%29.%20Is%20it%20still%20available%3F" class="btn btn-inquire" target="_blank">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-card" data-type="commercial">
+                    
+                    
+            <div class="property-image" style="background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);">
+                <span class="property-type-badge">Commercial</span>
+                Cyber One Building
+            </div>
+                    <div class="property-content">
+                        <h3 class="property-title">11C - Cyber One Building</h3>
+                        <div class="property-location">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Eastwood City Cyberpark, QC
+                        </div>
+                        <div class="property-details">
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                                61 sqm
+                            </div>
+                            
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                PEZA Zone
+                            </div>
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                Clean Title
+                            </div>
+                        </div>
+                        <div class="property-footer">
+                            <div class="property-price">₱8.5M</div>
+                            <a href="https://wa.me/639673003117?text=Hi%21%20I%27m%20interested%20in%2011C%20at%20Cyber%20One%20Building%20%2861sqm%20-%20%E2%82%B18.5M%29.%20Is%20it%20still%20available%3F" class="btn btn-inquire" target="_blank">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-card" data-type="commercial">
+                    
+                    
+            <div class="property-image" style="background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);">
+                <span class="property-type-badge">Commercial</span>
+                Cyber One Building
+            </div>
+                    <div class="property-content">
+                        <h3 class="property-title">11D - Cyber One Building</h3>
+                        <div class="property-location">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Eastwood City Cyberpark, QC
+                        </div>
+                        <div class="property-details">
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                                61 sqm
+                            </div>
+                            
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                PEZA Zone
+                            </div>
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                Clean Title
+                            </div>
+                        </div>
+                        <div class="property-footer">
+                            <div class="property-price">₱8.5M</div>
+                            <a href="https://wa.me/639673003117?text=Hi%21%20I%27m%20interested%20in%2011D%20at%20Cyber%20One%20Building%20%2861sqm%20-%20%E2%82%B18.5M%29.%20Is%20it%20still%20available%3F" class="btn btn-inquire" target="_blank">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-card" data-type="commercial">
+                    
+                    
+            <div class="property-image" style="background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);">
+                <span class="property-type-badge">Commercial</span>
+                Cyber One Building
+            </div>
+                    <div class="property-content">
+                        <h3 class="property-title">11i - Cyber One Building</h3>
+                        <div class="property-location">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Eastwood City Cyberpark, QC
+                        </div>
+                        <div class="property-details">
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                                61 sqm
+                            </div>
+                            
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                PEZA Zone
+                            </div>
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                Clean Title
+                            </div>
+                        </div>
+                        <div class="property-footer">
+                            <div class="property-price">₱8.5M</div>
+                            <a href="https://wa.me/639673003117?text=Hi%21%20I%27m%20interested%20in%2011i%20at%20Cyber%20One%20Building%20%2861sqm%20-%20%E2%82%B18.5M%29.%20Is%20it%20still%20available%3F" class="btn btn-inquire" target="_blank">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-card" data-type="commercial">
+                    
+                    
+            <div class="property-image" style="background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);">
+                <span class="property-type-badge">Commercial</span>
+                Cyber One Building
+            </div>
+                    <div class="property-content">
+                        <h3 class="property-title">11U - Cyber One Building</h3>
+                        <div class="property-location">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Eastwood City Cyberpark, QC
+                        </div>
+                        <div class="property-details">
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                                61 sqm
+                            </div>
+                            
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                PEZA Zone
+                            </div>
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                Clean Title
+                            </div>
+                        </div>
+                        <div class="property-footer">
+                            <div class="property-price">₱8.5M</div>
+                            <a href="https://wa.me/639673003117?text=Hi%21%20I%27m%20interested%20in%2011U%20at%20Cyber%20One%20Building%20%2861sqm%20-%20%E2%82%B18.5M%29.%20Is%20it%20still%20available%3F" class="btn btn-inquire" target="_blank">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-card" data-type="commercial">
+                    
+                    
+            <div class="property-image" style="background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);">
+                <span class="property-type-badge">Commercial</span>
+                Cyber One Building
+            </div>
+                    <div class="property-content">
+                        <h3 class="property-title">15K - Cyber One Building</h3>
+                        <div class="property-location">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Eastwood City Cyberpark, QC
+                        </div>
+                        <div class="property-details">
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                                135.5 sqm
+                            </div>
+                            
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                PEZA Zone
+                            </div>
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                Clean Title
+                            </div>
+                        </div>
+                        <div class="property-footer">
+                            <div class="property-price">₱20M</div>
+                            <a href="https://wa.me/639673003117?text=Hi%21%20I%27m%20interested%20in%2015K%20at%20Cyber%20One%20Building%20%28135.5sqm%20-%20%E2%82%B120M%29.%20Is%20it%20still%20available%3F" class="btn btn-inquire" target="_blank">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-card" data-type="commercial">
+                    
+                    
+            <div class="property-image" style="background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);">
+                <span class="property-type-badge">Commercial</span>
+                Cyber One Building
+            </div>
+                    <div class="property-content">
+                        <h3 class="property-title">15L - Cyber One Building</h3>
+                        <div class="property-location">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Eastwood City Cyberpark, QC
+                        </div>
+                        <div class="property-details">
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                                135.5 sqm
+                            </div>
+                            
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                PEZA Zone
+                            </div>
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                Clean Title
+                            </div>
+                        </div>
+                        <div class="property-footer">
+                            <div class="property-price">₱20M</div>
+                            <a href="https://wa.me/639673003117?text=Hi%21%20I%27m%20interested%20in%2015L%20at%20Cyber%20One%20Building%20%28135.5sqm%20-%20%E2%82%B120M%29.%20Is%20it%20still%20available%3F" class="btn btn-inquire" target="_blank">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-card" data-type="commercial">
+                    
+                    
+            <div class="property-image" style="background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);">
+                <span class="property-type-badge">Commercial</span>
+                IBM Building
+            </div>
+                    <div class="property-content">
+                        <h3 class="property-title">16H - IBM Building</h3>
+                        <div class="property-location">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Eastwood City, QC
+                        </div>
+                        <div class="property-details">
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                                110.8 sqm
+                            </div>
+                            
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                PEZA Zone
+                            </div>
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                Clean Title
+                            </div>
+                        </div>
+                        <div class="property-footer">
+                            <div class="property-price">₱15M</div>
+                            <a href="https://wa.me/639673003117?text=Hi%21%20I%27m%20interested%20in%2016H%20at%20IBM%20Building%20%28110.8sqm%20-%20%E2%82%B115M%29.%20Is%20it%20still%20available%3F" class="btn btn-inquire" target="_blank">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-card" data-type="residential">
+                    
+                    
+            <div class="property-image" style="background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);">
+                <span class="property-type-badge">Residential</span>
+                Eastwood Park Residence
+            </div>
+                    <div class="property-content">
+                        <h3 class="property-title">28E - Eastwood Park Residence</h3>
+                        <div class="property-location">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Eastwood City, QC
+                        </div>
+                        <div class="property-details">
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                                67 sqm
+                            </div>
+                            
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                Residential
+                            </div>
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                Pool Access
+                            </div>
+                        </div>
+                        <div class="property-footer">
+                            <div class="property-price">₱16M</div>
+                            <a href="https://wa.me/639673003117?text=Hi%21%20I%27m%20interested%20in%2028E%20at%20Eastwood%20Park%20Residence%20%2867sqm%20-%20%E2%82%B116M%29.%20Is%20it%20still%20available%3F" class="btn btn-inquire" target="_blank">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-card" data-type="residential">
+                    
+                    
+            <div class="property-image" style="background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);">
+                <span class="property-type-badge">Residential</span>
+                Eastwood Park Residence
+            </div>
+                    <div class="property-content">
+                        <h3 class="property-title">28F - Eastwood Park Residence</h3>
+                        <div class="property-location">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Eastwood City, QC
+                        </div>
+                        <div class="property-details">
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                                61 sqm
+                            </div>
+                            
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                Residential
+                            </div>
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                Pool Access
+                            </div>
+                        </div>
+                        <div class="property-footer">
+                            <div class="property-price">₱16M</div>
+                            <a href="https://wa.me/639673003117?text=Hi%21%20I%27m%20interested%20in%2028F%20at%20Eastwood%20Park%20Residence%20%2861sqm%20-%20%E2%82%B116M%29.%20Is%20it%20still%20available%3F" class="btn btn-inquire" target="_blank">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-card" data-type="parking">
+                    
+                    
+            <div class="property-image" style="background: linear-gradient(135deg, #718096 0%, #4a5568 100%);">
+                <span class="property-type-badge">Parking</span>
+                Cyber One Building
+            </div>
+                    <div class="property-content">
+                        <h3 class="property-title">Parking #6 - Cyber One Building</h3>
+                        <div class="property-location">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Basement 4, Cyber One
+                        </div>
+                        <div class="property-details">
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                                12.5 sqm
+                            </div>
+                            
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                Deeded Slot
+                            </div>
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                With Title
+                            </div>
+                        </div>
+                        <div class="property-footer">
+                            <div class="property-price">₱1.5M</div>
+                            <a href="https://wa.me/639673003117?text=Hi%21%20I%27m%20interested%20in%20Parking%20%236%20at%20Cyber%20One%20Building%20%2812.5sqm%20-%20%E2%82%B11.5M%29.%20Is%20it%20still%20available%3F" class="btn btn-inquire" target="_blank">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-card" data-type="parking">
+                    
+                    
+            <div class="property-image" style="background: linear-gradient(135deg, #718096 0%, #4a5568 100%);">
+                <span class="property-type-badge">Parking</span>
+                Cyber One Building
+            </div>
+                    <div class="property-content">
+                        <h3 class="property-title">Parking #24 - Cyber One Building</h3>
+                        <div class="property-location">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Basement 3, Cyber One
+                        </div>
+                        <div class="property-details">
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                                12.5 sqm
+                            </div>
+                            
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                Deeded Slot
+                            </div>
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                With Title
+                            </div>
+                        </div>
+                        <div class="property-footer">
+                            <div class="property-price">₱1.5M</div>
+                            <a href="https://wa.me/639673003117?text=Hi%21%20I%27m%20interested%20in%20Parking%20%2324%20at%20Cyber%20One%20Building%20%2812.5sqm%20-%20%E2%82%B11.5M%29.%20Is%20it%20still%20available%3F" class="btn btn-inquire" target="_blank">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-card" data-type="parking">
+                    
+                    
+            <div class="property-image" style="background: linear-gradient(135deg, #718096 0%, #4a5568 100%);">
+                <span class="property-type-badge">Parking</span>
+                IBM Building
+            </div>
+                    <div class="property-content">
+                        <h3 class="property-title">Parking #43 - IBM Building</h3>
+                        <div class="property-location">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Basement 3, IBM Building
+                        </div>
+                        <div class="property-details">
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                                12.5 sqm
+                            </div>
+                            
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                Deeded Slot
+                            </div>
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                With Title
+                            </div>
+                        </div>
+                        <div class="property-footer">
+                            <div class="property-price">₱1.5M</div>
+                            <a href="https://wa.me/639673003117?text=Hi%21%20I%27m%20interested%20in%20Parking%20%2343%20at%20IBM%20Building%20%2812.5sqm%20-%20%E2%82%B11.5M%29.%20Is%20it%20still%20available%3F" class="btn btn-inquire" target="_blank">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-card" data-type="parking">
+                    
+                    
+            <div class="property-image" style="background: linear-gradient(135deg, #718096 0%, #4a5568 100%);">
+                <span class="property-type-badge">Parking</span>
+                Eastwood Park Residence
+            </div>
+                    <div class="property-content">
+                        <h3 class="property-title">Parking #66 - Eastwood Park Residence</h3>
+                        <div class="property-location">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Basement 3, EPR
+                        </div>
+                        <div class="property-details">
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                                12.5 sqm
+                            </div>
+                            
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                Deeded Slot
+                            </div>
+                            <div class="property-detail">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                With Title
+                            </div>
+                        </div>
+                        <div class="property-footer">
+                            <div class="property-price">₱1.5M</div>
+                            <a href="https://wa.me/639673003117?text=Hi%21%20I%27m%20interested%20in%20Parking%20%2366%20at%20Eastwood%20Park%20Residence%20%2812.5sqm%20-%20%E2%82%B11.5M%29.%20Is%20it%20still%20available%3F" class="btn btn-inquire" target="_blank">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="documents">
+        <div class="container">
+            <div class="section-header">
+                <h2>Complete & Verified Documents</h2>
+                <p>All properties have clean titles and updated tax payments. Buy with confidence.</p>
+            </div>
+            <div class="trust-grid">
+                <div class="trust-card">
+                    <div class="trust-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+                    <h3>Clean CCT Titles</h3>
+                    <p>All Condominium Certificates of Title are clean and ready for transfer.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+                    <h3>Updated Tax Declarations</h3>
+                    <p>Tax declarations updated as of 2024. Real property taxes paid and current.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                    <h3>Direct Owner Transaction</h3>
+                    <p>Deal directly with the property owner. No middlemen, no hidden fees.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta" id="contact">
+        <div class="container">
+            <h2>Ready to Invest in Eastwood City?</h2>
+            <p>Contact us directly on WhatsApp for inquiries, viewing schedules, or to discuss pricing. We respond within hours.</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/639673003117?text=Hi%21%20I%27m%20interested%20in%20your%20Eastwood%20properties.%20Can%20you%20send%20me%20more%20details%3F" class="btn btn-whatsapp" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Chat on WhatsApp
+                </a>
+                <a href="mailto:eastwoodcitymanilaproperties@gmail.com" class="btn btn-ghost">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    Send Email
+                </a>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    +63 967 300 3117
+                </div>
+                <div class="contact-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    eastwoodcitymanilaproperties@gmail.com
+                </div>
+                <div class="contact-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Eastwood City, Quezon City
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">Eastwood Manila Properties</div>
+            <p>Premium commercial and residential properties for sale in Eastwood City, Quezon City. Direct from owner — no agent fees.</p>
+            <div class="footer-links">
+                <a href="#properties">Properties</a>
+                <a href="#why-us">Why Us</a>
+                <a href="#contact">Contact</a>
+                <a href="https://www.facebook.com/profile.php?id=100093213040745" target="_blank">Facebook</a>
+            </div>
+            <div class="footer-bottom">© 2026 Eastwood Manila Properties. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/639673003117?text=Hi%21%20I%27m%20interested%20in%20your%20Eastwood%20properties.%20Can%20you%20send%20me%20more%20details%3F" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const propertyCards = document.querySelectorAll('.property-card');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    const filter = this.getAttribute('data-filter');
+                    propertyCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-type') === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
