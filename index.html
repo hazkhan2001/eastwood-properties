@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Eastwood Properties - Real Estate in Eastwood City, Manila</title>
+      <style>
+                * {
+                              margin: 0;
+                              padding: 0;
+                              box-sizing: border-box;
+                }
+
+                body {
+                              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                              line-height: 1.6;
+                              color: #333;
+                }
+
+                header {
+                              background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                              color: white;
+                              padding: 1rem 0;
+                              position: sticky;
+                              top: 0;
+                              box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                }
+
+                nav {
+                              max-width: 1200px;
+                              margin: 0 auto;
+                              display: flex;
+                              justify-content: space-between;
+                              align-items: center;
+                              padding: 0 20px;
+                }
+
+                nav h1 {
+                              font-size: 1.8rem;
+                }
+
+                nav ul {
+                              list-style: none;
+                              display: flex;
+                              gap: 2rem;
+                }
+
+                nav a {
+                              color: white;
+                              text-decoration: none;
+                              transition: opacity 0.3s;
+                }
+
+                nav a:hover {
+                              opacity: 0.8;
+                }
+
+                .hero {
+                              background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                              color: white;
+                              padding: 4rem 20px;
+                              text-align: center;
+                }
+
+                .hero h2 {
+                              font-size: 2.5rem;
+                              margin-bottom: 1rem;
+                }
+
+                .hero p {
+                              font-size: 1.2rem;
+                              margin-bottom: 2rem;
+                }
+
+                .cta-button {
+                              display: inline-block;
+                              background: #ff6b6b;
+                              color: white;
+                              padding: 0.8rem 2rem;
+                              text-decoration: none;
+                              border-radius: 5px;
+                              transition: background 0.3s;
+                              font-weight: bold;
+                }
+
+                .cta-button:hover {
+                              background: #ff5252;
+                }
+
+                .container {
+                              max-width: 1200px;
+                              margin: 0 auto;
+                              padding: 20px;
+                }
+
+                .properties {
+                              display: grid;
+                              grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                              gap: 2rem;
+                              margin: 3rem 0;
+                }
+
+                .property-card {
+                              border: 1px solid #ddd;
+                              border-radius: 8px;
+                              overflow: hidden;
+                              box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                              transition: transform 0.3s, box-shadow 0.3s;
+                }
+
+                .property-card:hover {
+                              transform: translateY(-5px);
+                              box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                }
+
+                .property-image {
+                              width: 100%;
+                              height: 200px;
+                              background: #f0f0f0;
+                              display: flex;
+                              align-items: center;
+                              justify-content: center;
+                              color: #999;
+                }
+
+                .property-info {
+                              padding: 1rem;
+                }
+
+                .property-info h3 {
+                              color: #667eea;
+                              margin-bottom: 0.5rem;
+                }
+
+                .property-price {
+                              font-size: 1.3rem;
+                              font-weight: bold;
+                              color: #ff6b6b;
+                              margin: 0.5rem 0;
+                }
+
+                .property-details {
+                              color: #666;
+                              font-size: 0.9rem;
+                              margin: 0.5rem 0;
+                }
+
+                section {
+                              padding: 2rem 0;
+                              border-bottom: 1px solid #eee;
+                }
+
+                section h2 {
+                              color: #667eea;
+                              margin-bottom: 1rem;
+                }
+
+                footer {
+                              background: #333;
+                              color: white;
+                              text-align: center;
+                              padding: 2rem;
+                              margin-top: 3rem;
+                }
+
+                footer p {
+                              margin-bottom: 0.5rem;
+                }
+
+                .contact-form {
+                              max-width: 500px;
+                              margin: 1rem auto;
+                }
+
+                .form-group {
+                              margin-bottom: 1rem;
+                }
+
+                .form-group label {
+                              display: block;
+                              margin-bottom: 0.5rem;
+                              font-weight: bold;
+                }
+
+                .form-group input,
+                .form-group textarea {
+                              width: 100%;
+                              padding: 0.5rem;
+                              border: 1px solid #ddd;
+                              border-radius: 4px;
+                              font-family: inherit;
+                }
+
+                .form-group textarea {
+                              resize: vertical;
+                }
+
+                .submit-btn {
+                              background: #667eea;
+                              color: white;
+                              padding: 0.8rem 2rem;
+                              border: none;
+                              border-radius: 4px;
+                              cursor: pointer;
+                              font-size: 1rem;
+                              width: 100%;
+                              transition: background 0.3s;
+                }
+
+                .submit-btn:hover {
+                              background: #5568d3;
+                }
+            </style>
+  </head>
+  <body>
+        <header>
+                  <nav>
+                                <h1>🏠 Eastwood Properties</h1>
+                              <ul>
+                                                <li><a href="#properties">Properties</a>a></li>
+                                              <li><a href="#about">About</a>a></li>
+                                              <li><a href="#contact">Contact</a>a></li>
+                              </ul>
+                  </nav>
+        </header>
+      
+      <section class="hero">
+              <h2>Find Your Dream Home in Eastwood City</h2>
+              <p>Premium Real Estate Properties in Eastwood City, Manila, Philippines</p>
+              <a href="#properties" class="cta-button">View Properties</a>a>
+      </section>section>
+      
+      <div class="container">
+              <section id="properties">
+                          <h2>Featured Properties</h2>
+                          <div class="properties">
+                                          <div class="property-card">
+                                                              <div class="property-image">Property Image</div>div>
+                                                              <div class="property-info">
+                                                                                      <h3>Modern Condo Unit</h3>
+                                                                                      <p class="property-price">₱3,500,000</p>
+                                                                                      <p class="property-details">2 Bedrooms • 2 Bathrooms • 75 sqm</p>
+                                                                                      <p class="property-details">Prime location in Eastwood City Center</p>
+                                                              </div>div>
+                                          </div>div>
+                                          
+                                          <div class="property-card">
+                                                              <div class="property-image">Property Image</div>div>
+                                                              <div class="property-info">
+                                                                                      <h3>Luxury Townhouse</h3>
+                                                                                      <p class="property-price">₱5,200,000</p>
+                                                                                      <p class="property-details">3 Bedrooms • 3 Bathrooms • 120 sqm</p>
+                                                                                      <p class="property-details">Near schools and shopping centers</p>
+                                                              </div>div>
+                                          </div>div>
+                                          
+                                          <div class="property-card">
+                                                              <div class="property-image">Property Image</div>div>
+                                                              <div class="property-info">
+                                                                                      <h3>Commercial Space</h3>
+                                                                                      <p class="property-price">₱2,800,000</p>
+                                                                                      <p class="property-details">Office • Retail • Service</p>
+                                                                                      <p class="property-details">High foot traffic area</p>
+                                                              </div>div>
+                                          </div>div>
+                          </div>div>
+              </section>section>
+              
+              <section id="about">
+                          <h2>About Eastwood Properties</h2>
+                          <p>Welcome to Eastwood Properties, your trusted partner in finding the perfect real estate in Eastwood City, Manila. With years of experience and a dedicated team, we help buyers and sellers navigate the property market with confidence.</p>
+                          <p>Whether you're looking for a residential unit, a commercial space, or an investment property, we have options to suit your needs and budget.</p>
+              </section>section>
+              
+              <section id="contact">
+                          <h2>Contact Us</h2>
+                          <p>Get in touch with our team to inquire about available properties or schedule a viewing.</p>
+                          <form class="contact-form" onsubmit="handleSubmit(event)">
+                                          <div class="form-group">
+                                                              <label for="name">Full Name</label>label>
+                                                              <input type="text" id="name" name="name" required>
+                                          </div>div>
+                                          <div class="form-group">
+                                                              <label for="email">Email</label>label>
+                                                              <input type="email" id="email" name="email" required>
+                                          </div>div>
+                                          <div class="form-group">
+                                                              <label for="phone">Phone</label>label>
+                                                              <input type="tel" id="phone" name="phone" required>
+                                          </div>div>
+                                          <div class="form-group">
+                                                              <label for="message">Message</label>label>
+                                                              <textarea id="message" name="message" rows="5" required></textarea>
+                                          </div>div>
+                                          <button type="submit" class="submit-btn">Send Inquiry</button>button>
+                          </form>form>
+              </section>section>
+      </div>div>
+      
+      <footer>
+                <p>&copy; 2026 Eastwood Properties. All rights reserved.</p>p>
+                <p>Eastwood City, Manila, Philippines</p>p>
+                <p>For inquiries: info@eastwoodproperties.com</p>p>
+      </footer>
+
+        <script>
+                  function handleSubmit(event) {
+                                event.preventDefault();
+                                alert('Thank you for your inquiry! We will contact you soon.');
+                                event.target.reset();
+                  }
+        </script>
+  </body>
+</html>html>
+        </script>
+      </footer></p></p></li></li>
+                              </ul></h1>
+                  </nav>
+        </header>
+  </body>
+      </style></title>
+  </head>
